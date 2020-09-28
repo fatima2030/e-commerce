@@ -1,0 +1,34 @@
+
+
+.styeel{
+    background-color: black !important;
+    color: blanchedalmond !important;
+    border-color: black !important ;
+}
+
+.mainn{
+    background-color: lightgoldenrodyellow !important ;
+    
+}
+
+.btn-primary{
+    background-color: black !important ;
+    border-color: black;
+}
+.btn-primary:hover{
+    background-color:rgb(60, 99, 117)!important ;
+    border-color: rgb(60, 99, 117) !important;
+}
+.tit{
+    color: black;
+}
+.tit:hover{
+    color:rgb(60, 99, 117)!important ;
+}
+
+.hlo{
+    color:lightgoldenrodyellow !important ;
+}
+.hlo:hover{
+    color:rgb(60, 99, 117)!important ;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+
+    <head>
+
+	
+
+     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}" />
+     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}" />
+     <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css'%}" />
+     <script type="text/javascript">
+        var user = '{{request.user}}'
+
+
+        function getToken(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getToken('csrftoken');
+     </script>
+     
+     <script src="{% static 'js/bootstrap.js'%}"></script>
+     <script type="text/javascript" src="{{ STATIC_URL }}js/cart.js "></script>
+
+
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Ecom</title>
+    </head>
+    <body>
+
+        <div class="coll navbar  navbar-dark bg-dark d-flex flex=colimn flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom shadow-sm">
+            <h5 class="ft  my-0 mr-md-auto font-weight-normal">
+               <a class="navbar-brand" href="{% url 'stor' %}"> Bnda</a>
+                
+            </h5>
+            <div class="search-bar mt-sm-2 mr-2">
+                <form method="get">
+                    <input class="form-control"  type="text" name="q" id="id_q" placeholder="Search...">
+        
+                </form>
+            </div>
+        
+            <nav class="my-2 my-md-0 mr-md-3">
+               
+                    <a class="btn btn-outline-primary " href="">Login</a>
+                    <a class="btn btn-outline-primary " href=""> <i class="fa fa-shopping-cart"></i> cart</a>
+
+               
+        
+            </nav>
+            
+            
+        </div>
+        
+   
+
+
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+
+
+        </div>
+
+    </body>
+</html>

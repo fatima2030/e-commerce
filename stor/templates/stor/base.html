@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block head_title %}{% endblock %}  Buotiqe</title>
+  {% block extra_head %}
+  {% endblock %}
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css'%}" />
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static  'css/bootstrap.min.css' %}" rel="stylesheet">
+  
+  <!-- Material Design Bootstrap -->
+  <link type="text/css" href="{% static 'css/mdb.css'%}" rel="stylesheet">
+  <link type="text/css" href="{% static 'css/mdb.lite.css'%}" rel="stylesheet">
+  <link type="text/css" href="{% static 'css/mdb.lite.min.css'%}" rel="stylesheet">
+  <link type="text/css" href="{% static 'css/mdb.min.css'%}" rel="stylesheet">
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css'%}" />
+
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+
+
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+  </style>
+  {% include "stor/navbar.html" %}
+
+</head>
+
+
+<body>
+
+    <div class="mt-5 pt-4">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+    {% block content1 %}
+
+    
+    {% endblock content1 %}
+
+
+    {% block content %}
+    
+    {% endblock content %}
+
+    {% block extra_body %}
+    {% endblock %}
+
+    {% include "stor/footer.html" %}
+    {% include "stor/scripts.html" %}
+
+    {% block extra_scripts %}
+    {% endblock extra_scripts %}
+</body>
+</html>

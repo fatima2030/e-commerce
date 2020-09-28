@@ -1,0 +1,78 @@
+{% extends 'stor/main.html' %}
+{% block content %}
+{% load static %}
+    <div class="row">
+        {% for prodect1 in prodect %}
+        <div class="col-lg-4">
+            <img class="thumbail" src="{{prodect1.imageURL}}" >
+
+            <div class="box-element product">
+                <h6 ><strong>{{ prodect1.name }}</strong></h6>
+                <br>
+                <button class="btn btn-outline-secondary add-btn update-cart" data-prodect="{{ prodect1.id }}" data-action="add" >add to card</button>
+                <button class="aaa" >tooo</button>
+                <a class="btn btn-outline-success" href="#">View</a>
+                <h4 style="display: inline-block ; float:right">${{ prodect1.price|floatformat:2 }}</h4>
+            </div>
+
+        </div>
+        {% endfor %}
+        
+       
+
+    </div>
+    <script type="text/javascript">
+
+        console.log('nhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhnnnnnnnnnnnnnnnnnnnnnnkmmmmmmmmmmmmmmmm') 
+
+        var updateBtns = document.getElementsByClassName('update-cart');
+
+        for(var i=0; i < updateBtns.length; i++){
+            updateBtns[i].addEventListener("click", function(){
+                console.log('USER:');
+
+                var prodectId = this.dataset.prodect
+                var action = this.dataset.action
+                console.log('prodectId:',prodectId,'action',action);
+                console.log('USER:',user);
+                if(user === 'AnonymousUser'){
+                    console.log('Not logged in')
+                }else{
+                    console.log(' logged in')
+                }
+
+
+            })
+
+        }
+        function updateUserOrder(prodectId,action){
+            console.log('User is logged in sendin data')
+            var url = '/update_Item/'
+
+            fetch(url,{
+                method : 'POST',
+                headers :{
+                    'Content-Type':'application/json' ,
+                    'X-CSRFToken' : csrftoken ,
+                },
+                body:JSON.stringify({'prodectId':prodectId,'action':action})
+            
+            })
+
+            .then((response) =>{
+                return response.json()
+            })
+
+            .then((data) =>{
+
+                console.log('data:',data)
+            })
+
+
+
+        }
+
+
+    </script>
+
+{% endblock content %}

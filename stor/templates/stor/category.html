@@ -1,0 +1,109 @@
+{% extends "stor/base.html" %}
+
+{% block content %}
+    
+  <!--Carousel Wrapper-->
+  
+  <!--/.Carousel Wrapper-->
+
+  <!--Main layout-->
+  <main>
+    <div class="container">
+
+      <!--Navbar-->
+      
+      <!--/.Navbar-->
+
+      <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+        <div class="card" style="color: gray; background-color: rgb(247, 243, 9)!important;" ><h3 ><b> {{ cats }}</h3></b></div> 
+        <br>
+       </hr> 
+          <div class="row wow fadeIn">
+
+            {% if category_item %} 
+
+            
+            {% for post in category_item %}
+            
+
+              <div class="col-lg-3 col-md-6 mb-4">
+  
+                <!--Card-->
+                <div class="card">
+  
+                  <!--Card image-->
+                  <div class="view overlay">
+                    <img src="{{ post.image.url }}" class="card-img-top" style="height:5cm!important;"
+                      alt="">
+                    <a href="{{post.get_absolute_url}}"  >
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                  <!--Card image-->
+  
+                  <!--Card content-->
+                  <div class="card-body text-center">
+                    <!--Category & Title-->
+                    <a href="" class="grey-text">
+                      <h5>{{post.categories}}</h5>
+                    </a>
+                    <h5>
+                      <strong>
+                        <a href="{{ post.get_absolute_url }}" class="dark-grey-text">{{post.title}}
+  
+                          {% if post.get_labals_display %}  
+                            <span class="badge badge-pill {{post.get_labals_display}}-color">NEW</span>
+                          {% endif %}
+                        </a>
+                      </strong>
+                    </h5>
+  
+                    <h4 >
+                      <strong>
+  
+                        
+                        {% if post.discount_price %}
+  
+                        <span class="mr-1">
+                          <del style="font-size: medium; color: black;">{{ post.price}}$</del>
+                        </span>
+                        <span class="font-weight-bold blue-text"> {{ post.discount_price}}$</span>
+                          
+                        {% else %}
+                          <span class="font-weight-bold blue-text">{{ post.price}}$</span> 
+  
+                        {% endif %}
+  
+                      </strong>
+                    </h4>
+  
+                  </div>
+                  <!--Card content-->
+                  <div class="card-footer" style="background-color: rgb(247, 243, 9); height: 10px;" ></div>
+
+  
+                </div>
+                <!--Card-->
+  
+              </div>
+            {% endfor %}
+            {% endif %}
+            </div>
+      
+
+
+
+      </section>
+      <!--Section: Products v.3-->
+
+      <!--Pagination-->
+     
+
+    </div>
+  </main>
+  
+
+
+{% endblock content %}
+
