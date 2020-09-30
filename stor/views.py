@@ -386,22 +386,6 @@ class PaymentView(View):
 
 
 
-        
-""" 
-        
-        payment =Payment
-        payment.stripe_charge_id
-        payment.user
-        payment.amount
-        payment.save()
-
-        order.ordered = True
-        order.payment = Payment
-        order.save()
-
-
- """
-    
 
 
 
@@ -559,53 +543,6 @@ def remove_single_item_from_cart(request,slug):
         return redirect('stor:prodeuts',slug= slug)
 
 
-""" 
-def get_coupon(request,code):
-    try:
-        coupon = Coupon.objects.get(code=code)
-        return coupon
-
-
-    except ObjectDoesNotExist:
-        messages.info(request,'You dont have active Code..')
-        return redirect('stor:checkout')
-    
-
-
-
-
-
-class add_coupon_view(View):
-    def post(self, *args , **kwargs):
-    
-        form = couponFotm(self.request.POST or None)
-        if form.is_valid():
-
-            try:
-                code =form.cleaned_data.get('code')
-                order = Order.objects.get(user= self.request.user,  ordered=False)
-                order.coupon = get_coupon(self.request,code=code)
-                order.save()
-                messages.info(self.request,'Sueccessfuly addedd coupon/..')
-                return redirect('stor:checkout')
-
-            except ObjectDoesNotExist:
-                messages.info(self.request,'You dont have  Code..')
-
-                return redirect('stor:checkout')
- """
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -613,6 +550,7 @@ class add_coupon_view(View):
 def get_coupon(request, code):
     try:
         coupon = Coupon.objects.get(code=code)
+        messages.success(request, "Successfully added coupon")
         return coupon
     except ObjectDoesNotExist:
         messages.info(request, "This coupon does not exist")
@@ -629,7 +567,7 @@ class add_coupon_view(View):
                     user=self.request.user, ordered=False)
                 order.coupon = get_coupon(self.request, code)
                 order.save()
-                messages.success(self.request, "Successfully added coupon")
+                
                 return redirect("stor:checkout")
             except ObjectDoesNotExist:
                 messages.info(self.request, "You do not have an active order")
