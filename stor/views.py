@@ -565,20 +565,13 @@ class add_coupon_view(View):
                 code = form.cleaned_data.get('code')
                 order = Order.objects.get(
                     user=self.request.user, ordered=False)
-                order.coupon = get_coupon(self.request, code)
+                order.Coupon = get_coupon(self.request, code)
                 order.save()
                 
                 return redirect("stor:checkout")
             except ObjectDoesNotExist:
                 messages.info(self.request, "You do not have an active order")
                 return redirect("stor:checkout")
-
-
-
-
-
-
-
 
 
 
