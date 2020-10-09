@@ -1,7 +1,6 @@
-django.contrib.sites
-allauth 
-allauth.account
-allauth.socialaccount
-crispy_forms
-django_countries
-tripe
+allauth-allauth==0.42.0
+django-crispy_forms==1.9.1
+django-countries==6.1.2
+stripe==2.54.0
+pillow==6.0.0
+django==3.0.6
